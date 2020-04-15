@@ -54,5 +54,25 @@ namespace BLL
             }
         }
 
+        public Creditos Buscar(int Identificacion)
+        {
+            try
+            {
+                Creditos creditos = creditoRepository.Buscar(Identificacion);
+                if (creditos == null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"!!La cuenta numero {Identificacion} no se encuentra registrada!!");
+                }
+                return creditos;
+            }
+            catch (Exception E)
+            {
+                Console.WriteLine("Error de lectura o escritura de archivos" + E.Message);
+                return null;
+            }
+
+        }
+
     }
 }

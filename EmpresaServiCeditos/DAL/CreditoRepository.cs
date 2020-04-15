@@ -24,5 +24,21 @@ namespace DAL
 
         }
 
+        public void Eliminar(int Identificacion)
+        {
+            liquidacionesCuotasModeradoras.Clear();
+            liquidacionesCuotasModeradoras = Consultar();
+            FileStream fileStream = new FileStream(@"C:\Users\Brayan\Documents\Visual Studio 2015\Projects\EmpresaServiCreditos\EmpresaServiCeditos\EmpresaServiCeditos\bin\Debug\Creditos.txt", FileMode.Create);
+            fileStream.Close();
+            foreach (var item in liquidacionesCuotasModeradoras)
+            {
+                if (item.Identificacion != Identificacion)
+                {
+                    Guardar(item);
+                }
+            }
+
+        }
+
     }
 }

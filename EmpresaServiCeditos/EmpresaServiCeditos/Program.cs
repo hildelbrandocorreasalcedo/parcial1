@@ -75,7 +75,7 @@ namespace EmpresaServiCeditos
                 mensaje = CreditoService.Guardar(creditos);
                 Console.WriteLine($"{mensaje}");
                 Console.WriteLine();
-                Console.WriteLine("El valor de la Credito es: {0}", creditos.Creditos);
+                Console.WriteLine("El valor de la Credito es: {0}", creditos.Creditos();
                 Console.WriteLine("¿Desea registrar otro Credito? S/N");
                 respuesta = ValidarLimitesAlfabeticos("!!Error!!, debe ingresar S o N", "S", "N");
                 Console.WriteLine();
@@ -111,7 +111,7 @@ namespace EmpresaServiCeditos
            
             Console.WriteLine();
             Console.WriteLine("el resultado valor a pagar :");
-            decimal ValordeServicio = decimal.Parse(Console.ReadLine());
+            
 
             if (TipodeTasa == "C")
             {
@@ -127,11 +127,25 @@ namespace EmpresaServiCeditos
             }
             return ValorPagar;
         }
-        
+
 
         public static void EliminarCredito()
         {
-
+            string respuesta;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine("**************servicreditos**************");
+                Console.WriteLine();
+                Console.WriteLine("Digite el numero Identificacion a ELIMINAR:");
+                int Identificacion = int.Parse(Console.ReadLine());
+                mensaje = creditoService.Eliminar(Identificacion);
+                Console.WriteLine($"{mensaje}");
+                Console.WriteLine("¿Desea eliminar otra identificacion con credito? S/N");
+                respuesta = ValidarLimitesAlfabeticos("!!Error!!, debe ingresar S o N", "S", "N");
+                Console.WriteLine();
+            } while (respuesta == "S");
         }
         public static void BuscarCredito()
         {
